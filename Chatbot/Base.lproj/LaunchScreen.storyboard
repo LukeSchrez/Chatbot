@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,46 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatbotBackground" translatesAutoresizingMaskIntoConstraints="NO" id="cYs-es-orm">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatbotLogo" translatesAutoresizingMaskIntoConstraints="NO" id="W22-Y3-Vev">
+                                <rect key="frame" x="45" y="272" width="300" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" By Luke Schrezenmeier &amp; Anthony Mardiros" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gM-21-RAZ">
+                                <rect key="frame" x="16" y="580" width="358" height="19"/>
+                                <fontDescription key="fontDescription" name="Galvji-Bold" family="Galvji" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="W22-Y3-Vev" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2B0-cs-uG1"/>
+                            <constraint firstItem="cYs-es-orm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ANW-bY-2Z4"/>
+                            <constraint firstItem="1gM-21-RAZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Rtt-rH-slQ"/>
+                            <constraint firstItem="cYs-es-orm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="XCY-xZ-tz4"/>
+                            <constraint firstItem="cYs-es-orm" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="gYU-0a-k6M"/>
+                            <constraint firstItem="W22-Y3-Vev" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kWu-Pp-MEe"/>
+                            <constraint firstItem="1gM-21-RAZ" firstAttribute="top" secondItem="W22-Y3-Vev" secondAttribute="bottom" constant="8" id="kec-tm-FXF"/>
+                            <constraint firstAttribute="bottom" secondItem="cYs-es-orm" secondAttribute="bottom" id="rtc-WG-fHy"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="50.769230769230766" y="374.64454976303318"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ChatbotBackground" width="595" height="841"/>
+        <image name="ChatbotLogo" width="300" height="300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
