@@ -9,6 +9,9 @@ import UIKit
 
 //Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
 //we can register our new MessageBubbleCell within the ViewController so we can output them within the TableView
+
+var botText = ""
+
 struct constants{
     static let xibFileName          = "MessageBubbleCell"
     static let botXibFileName       = "BotResponseCell"
@@ -59,20 +62,75 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomContraintTextField: NSLayoutConstraint!
     
     @IBAction func sendButtonPressed(_ sender: Any) {
+        
         //text is the new input typed in by the user of type messageTextField.text
         if let text = messageTextField.text {
             //Set newMessage to equal a new sampleMessages, with the body being new input text
-            let newMessage = sampleMessages(body: text)
+            var newMessage = sampleMessages(body: text)
             //Just in case the user types nothing, make sure we set the new text equal to nothing
             messageTextField.text = ""
             //Once the user hits send, append newMessage to the messages array which is linked to the struct
             //sampleMessages
             self.messages.append(newMessage)
-            //With our data loaded, make sure to update the table view with the new data
+            
             MessageTableView.reloadData()
             //This will automatically scroll the table view to the most recent message sent
             MessageTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
+            
+            responses(msg: &newMessage)
+            //With our data loaded, make sure to update the table view with the new data
         }
+    }
+    
+    func responses(msg: inout sampleMessages) {
+        //DispatchQueue.main.asyncAfter( deadline: .now() + 0.75 ) { [self] in
+        var elem = 0
+        var memory: [Any] = Array(repeating: 0, count: 99)
+        
+        if (msg.body == "hello") {
+            botText = "Hello there, welcome to your personal chatbot developed in Swift!"
+        }
+        
+        if (msg.body == "how are you?") {
+            botText = "I'm good, how are you?"
+        }
+        if (botText == ("I'm good, how are you?")) {
+            if (msg.body == "good") {
+                botText = "That's good to hear"
+            }
+        }
+        
+        if (botText == "My name is Taylor, what is yours?") {
+            botText = "Nice to meet you, \(msg.body)!"
+        }
+        if (msg.body == "what is your name?") {
+            botText = "My name is Taylor, what is yours?"
+        }
+            
+        if (botText == "Woah we go to the same school! What is your major?") {
+            if ((msg.body == "CS") || (msg.body == "Computer science")) {
+                botText = "We have the same major too! How do you like it?"
+            } else {
+                botText = "Oh interesting, how do you like \(msg.body)?"
+            }
+        }
+        if (botText == "I go to CSUF! What about you?") {
+            if (msg.body == "CSUF") {
+                botText = "Woah we go to the same school! What is your major?"
+                memory[elem] = "CSUF"
+                elem += 1
+            }
+        }
+        if (msg.body == "what school do you go to?") {
+            botText = "I go to CSUF! What about you?"
+        }
+        
+        let newBotMessage = sampleMessages(body: botText)
+        print (newBotMessage)
+        self.messages.append(newBotMessage)
+        self.MessageTableView.reloadData()
+        MessageTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
+        //}
     }
     
     //This is the core of our chat messages. A struct called sampleMessages, with a single variable body of
