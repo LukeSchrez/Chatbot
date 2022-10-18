@@ -142,7 +142,7 @@ class ViewController: UIViewController {
     //Now with our core sampleMessages above, create an array of sampleMessages and just call it messages.
     //Now we can store as many chats as we want into this array and it will update our table view accordingly
     var messages: [sampleMessages] = [
-        sampleMessages(body: "Hello! I am your semi-smart Swift Chatbot!")
+        //sampleMessages(body: "Hello! I am your semi-smart Swift Chatbot!")
     ]
     
     
@@ -206,7 +206,7 @@ extension ViewController: UITableViewDataSource{
     //the unique designs
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Check if the current row index of the table view is odd for the bot or even for the user so that they alternate
-        if (indexPath.row % 2) != 0{
+        if (indexPath.row % 2) == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: constants.xibFileIdentifier, for: indexPath)
             as! MessageBubbleCell
             //Assign the text of the cell with the current index of messages and return the new cell
