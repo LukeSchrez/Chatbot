@@ -10,8 +10,10 @@ import UIKit
 //Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
 //we can register our new MessageBubbleCell within the ViewController so we can output them within the TableView
 struct constants{
-    static let xibFileName       = "MessageBubbleCell"
-    static let xibFileIdentifier = "ReusableMessageCell"
+    static let xibFileName          = "MessageBubbleCell"
+    static let botXibFileName       = "BotResponseCell"
+    static let xibFileIdentifier    = "ReusableMessageCell"
+    static let botXibFileIdentifier = "BotMessageCell"
 }
 
 /***************************************************************************************
@@ -82,8 +84,7 @@ class ViewController: UIViewController {
     //Now with our core sampleMessages above, create an array of sampleMessages and just call it messages.
     //Now we can store as many chats as we want into this array and it will update our table view accordingly
     var messages: [sampleMessages] = [
-        sampleMessages(body: "This took forever to fix"),
-        sampleMessages(body: "I hate runtime errors so much if this happens again imma kill myself")
+        sampleMessages(body: "Hello! I am your semi-smart Swift Chatbot!")
     ]
     
     
@@ -96,6 +97,12 @@ class ViewController: UIViewController {
         //within the table view. Now, our table view knows how to create new cells and it will use the design of
         //our MessageBubbleCell to do it!
         MessageTableView.register(UINib(nibName: constants.xibFileName, bundle: nil), forCellReuseIdentifier: constants.xibFileIdentifier)
+        
+        //This register() function is responsible for "registering" our MessageBubbleCell so that it can be used
+        //within the table view. Now, our table view knows how to create new cells and it will use the design of
+        //our MessageBubbleCell to do it!
+        MessageTableView.register(UINib(nibName: constants.botXibFileName, bundle: nil), forCellReuseIdentifier: constants.botXibFileIdentifier)
+    
         
         //addObserver() will allow us to manipulate the keyboard when it is pressed. That way, we can use the
         //keyboardWillShow() function below to manipulate how our view looks when it is being displayed
@@ -114,7 +121,7 @@ class ViewController: UIViewController {
         if let keyboardHeight = self.getKeyboardHeight(notification: sender) {
             //With the height of the keyboard given by getKeyboardHeight(), make sure the bottom
             //constraint is 25 units above the keyboard
-            bottomContraintTextField.constant = keyboardHeight - 25
+            bottomContraintTextField.constant = keyboardHeight - 18
         }
         else {
             bottomContraintTextField.constant = 300
@@ -136,15 +143,25 @@ extension ViewController: UITableViewDataSource{
     }
     
     //This func ensures that every new cell in our TableView will be using the data from messages and updating
-    //the TableView with that data using our MessageBubbleCell. The .xibFileIdentifier is what is allowing the
-    //cell to access the MessageTableView and the MessageBubbleCell identifier is what allows the cell to use
-    //the design
+    //the TableView with that data using our MessageBubbleCell and BotResponse cell. The .xibFileIdentifier is what is allowing the
+    //cell to access the MessageTableView and the MessageBubbleCell/BotResponseCell identifier is what allows the cell to use
+    //the unique designs
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: constants.xibFileIdentifier, for: indexPath)
-        as! MessageBubbleCell
-        //Assign the text of the cell with the current index of messages and return the new cell
-        cell.label.text = messages[indexPath.row].body
-        return cell
+        //Check if the current row index of the table view is odd for the bot or even for the user so that they alternate
+        if (indexPath.row % 2) != 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: constants.xibFileIdentifier, for: indexPath)
+            as! MessageBubbleCell
+            //Assign the text of the cell with the current index of messages and return the new cell
+            cell.label.text = messages[indexPath.row].body
+            return cell
+        }
+        else{
+            let botCell = tableView.dequeueReusableCell(withIdentifier: constants.botXibFileIdentifier, for: indexPath)
+            as! BotResponseCell
+            //Assign the text of the bot cell with the current index of messages and return the new cell
+            botCell.BotTextLabel.text = messages[indexPath.row].body
+            return botCell
+        }
     }
 }
 //End of extension class ViewController

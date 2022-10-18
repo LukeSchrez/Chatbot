@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		820E243428D3E24000CC55F5 /* MessageBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820E243228D3E24000CC55F5 /* MessageBubbleCell.swift */; };
 		820E243528D3E24000CC55F5 /* MessageBubbleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820E243328D3E24000CC55F5 /* MessageBubbleCell.xib */; };
+		823593A728EF8F6A0001C52D /* BotResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823593A528EF8F6A0001C52D /* BotResponseCell.swift */; };
+		823593A828EF8F6A0001C52D /* BotResponseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823593A628EF8F6A0001C52D /* BotResponseCell.xib */; };
 		82702B8128C97C8E0023772E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82702B8028C97C8E0023772E /* AppDelegate.swift */; };
 		82702B8328C97C8E0023772E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82702B8228C97C8E0023772E /* SceneDelegate.swift */; };
 		82702B8528C97C8E0023772E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82702B8428C97C8E0023772E /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		820E243228D3E24000CC55F5 /* MessageBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCell.swift; sourceTree = "<group>"; };
 		820E243328D3E24000CC55F5 /* MessageBubbleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleCell.xib; sourceTree = "<group>"; };
+		823593A528EF8F6A0001C52D /* BotResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponseCell.swift; sourceTree = "<group>"; };
+		823593A628EF8F6A0001C52D /* BotResponseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BotResponseCell.xib; sourceTree = "<group>"; };
 		82702B7D28C97C8E0023772E /* Chatbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82702B8028C97C8E0023772E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82702B8228C97C8E0023772E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				82702B8028C97C8E0023772E /* AppDelegate.swift */,
 				82702B8228C97C8E0023772E /* SceneDelegate.swift */,
 				82702B8428C97C8E0023772E /* ViewController.swift */,
+				823593A528EF8F6A0001C52D /* BotResponseCell.swift */,
+				823593A628EF8F6A0001C52D /* BotResponseCell.xib */,
 				82702B8628C97C8E0023772E /* Main.storyboard */,
 				82702B8928C97C8E0023772E /* Assets.xcassets */,
 				82702B8B28C97C8E0023772E /* LaunchScreen.storyboard */,
@@ -134,6 +140,7 @@
 				82702B8D28C97C8E0023772E /* LaunchScreen.storyboard in Resources */,
 				82702B8A28C97C8E0023772E /* Assets.xcassets in Resources */,
 				82702B8828C97C8E0023772E /* Main.storyboard in Resources */,
+				823593A828EF8F6A0001C52D /* BotResponseCell.xib in Resources */,
 				820E243528D3E24000CC55F5 /* MessageBubbleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +156,7 @@
 				82702B8128C97C8E0023772E /* AppDelegate.swift in Sources */,
 				82702B8328C97C8E0023772E /* SceneDelegate.swift in Sources */,
 				820E243428D3E24000CC55F5 /* MessageBubbleCell.swift in Sources */,
+				823593A728EF8F6A0001C52D /* BotResponseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
