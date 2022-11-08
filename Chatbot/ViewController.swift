@@ -61,6 +61,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var bottomContraintTextField: NSLayoutConstraint!
     
+    
+    
+    @IBAction func infoButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "moveToOptions", sender: self)
+    }
+    
     @IBAction func sendButtonPressed(_ sender: Any) {
         
         //text is the new input typed in by the user of type messageTextField.text
@@ -144,7 +150,7 @@ class ViewController: UIViewController {
     var messages: [sampleMessages] = [
         //sampleMessages(body: "Hello! I am your semi-smart Swift Chatbot!")
     ]
-    
+        
     
     //This function is called right when the view is loaded. It is a predefined function that has to be here to
     //ensure our storyboards are outputting correctly

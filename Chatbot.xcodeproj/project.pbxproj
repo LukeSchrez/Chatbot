@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		820E243428D3E24000CC55F5 /* MessageBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820E243228D3E24000CC55F5 /* MessageBubbleCell.swift */; };
 		820E243528D3E24000CC55F5 /* MessageBubbleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 820E243328D3E24000CC55F5 /* MessageBubbleCell.xib */; };
+		822AD8A7290CCDCD00F8AEAC /* AccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822AD8A6290CCDCD00F8AEAC /* AccessViewController.swift */; };
 		823593A728EF8F6A0001C52D /* BotResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823593A528EF8F6A0001C52D /* BotResponseCell.swift */; };
 		823593A828EF8F6A0001C52D /* BotResponseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823593A628EF8F6A0001C52D /* BotResponseCell.xib */; };
 		82702B8128C97C8E0023772E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82702B8028C97C8E0023772E /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		820E243228D3E24000CC55F5 /* MessageBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCell.swift; sourceTree = "<group>"; };
 		820E243328D3E24000CC55F5 /* MessageBubbleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleCell.xib; sourceTree = "<group>"; };
+		822AD8A6290CCDCD00F8AEAC /* AccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessViewController.swift; sourceTree = "<group>"; };
 		823593A528EF8F6A0001C52D /* BotResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponseCell.swift; sourceTree = "<group>"; };
 		823593A628EF8F6A0001C52D /* BotResponseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BotResponseCell.xib; sourceTree = "<group>"; };
 		82702B7D28C97C8E0023772E /* Chatbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 				82702B8028C97C8E0023772E /* AppDelegate.swift */,
 				82702B8228C97C8E0023772E /* SceneDelegate.swift */,
 				82702B8428C97C8E0023772E /* ViewController.swift */,
+				822AD8A6290CCDCD00F8AEAC /* AccessViewController.swift */,
 				823593A528EF8F6A0001C52D /* BotResponseCell.swift */,
 				823593A628EF8F6A0001C52D /* BotResponseCell.xib */,
 				82702B8628C97C8E0023772E /* Main.storyboard */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				822AD8A7290CCDCD00F8AEAC /* AccessViewController.swift in Sources */,
 				82702B8528C97C8E0023772E /* ViewController.swift in Sources */,
 				82702B8128C97C8E0023772E /* AppDelegate.swift in Sources */,
 				82702B8328C97C8E0023772E /* SceneDelegate.swift in Sources */,
@@ -300,7 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4RD3785QZ5;
@@ -330,7 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4RD3785QZ5;

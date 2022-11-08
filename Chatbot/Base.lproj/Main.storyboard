@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sMQ-dl-Rrx" userLabel="MessageTableView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="700"/>
+                                <rect key="frame" x="0.0" y="101" width="393" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="32k-dI-bKt"/>
@@ -49,6 +49,14 @@
                                     <constraint firstAttribute="height" constant="34" id="my5-xR-a3T"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVd-lG-P8E">
+                                <rect key="frame" x="15.999999999999996" y="59" width="49.666666666666657" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="infoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iig-F2-8VB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,9 +64,12 @@
                             <constraint firstItem="sMQ-dl-Rrx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="30C-1d-2Np"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xx0-so-Exk" secondAttribute="trailing" constant="20" id="7dl-v7-Te1"/>
                             <constraint firstItem="sMQ-dl-Rrx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cur-qO-OdZ"/>
-                            <constraint firstItem="sMQ-dl-Rrx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FXA-it-7F9"/>
+                            <constraint firstItem="tVd-lG-P8E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ej3-g5-wc7"/>
+                            <constraint firstItem="sMQ-dl-Rrx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="FXA-it-7F9"/>
                             <constraint firstItem="xx0-so-Exk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ORn-Sx-fdr"/>
+                            <constraint firstItem="tVd-lG-P8E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Vgg-hb-G9g"/>
                             <constraint firstItem="xx0-so-Exk" firstAttribute="top" secondItem="sMQ-dl-Rrx" secondAttribute="bottom" constant="10" id="fBk-Dk-QMe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tVd-lG-P8E" secondAttribute="trailing" symbolic="YES" id="gqg-qi-8yo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xx0-so-Exk" secondAttribute="bottom" constant="15" id="xxw-1S-Urz"/>
                         </constraints>
                     </view>
@@ -66,14 +77,85 @@
                         <outlet property="MessageTableView" destination="sMQ-dl-Rrx" id="Nq4-S4-loT"/>
                         <outlet property="bottomContraintTextField" destination="xxw-1S-Urz" id="Vqu-dY-cXa"/>
                         <outlet property="messageTextField" destination="6Pj-at-yZO" id="Wg8-yI-dbE"/>
+                        <segue destination="Uj4-rC-HcV" kind="presentation" identifier="moveToOptions" id="MP1-LO-nvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
+            <point key="canvasLocation" x="28.244274809160306" y="83.098591549295776"/>
+        </scene>
+        <!--Access View Controller-->
+        <scene sceneID="S8e-9g-sg1">
+            <objects>
+                <viewController id="Uj4-rC-HcV" customClass="AccessViewController" customModule="Chatbot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JoZ-XD-V8d">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accesibility Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdk-x8-W2D">
+                                <rect key="frame" x="68.333333333333343" y="317" width="256.33333333333326" height="35"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="106" translatesAutoresizingMaskIntoConstraints="NO" id="T7c-7B-Bau">
+                                <rect key="frame" x="33.333333333333343" y="376" width="326.66666666666663" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark/Light Toggle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2n-v8-WdK">
+                                        <rect key="frame" x="0.0" y="0.0" width="173.66666666666666" height="31"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="678-OP-esO">
+                                        <rect key="frame" x="279.66666666666669" y="0.0" width="49" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="47" id="Dca-81-64O"/>
+                                            <constraint firstAttribute="height" constant="31" id="HYN-HB-DjM"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="DarkModeButtonPressed:" destination="Uj4-rC-HcV" eventType="valueChanged" id="0DJ-7D-aij"/>
+                                            <action selector="saveState:" destination="Uj4-rC-HcV" eventType="valueChanged" id="uNG-Ju-B3a"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mc1-AH-RJm">
+                                <rect key="frame" x="16" y="59" width="77.333333333333329" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="91d-OX-aIU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="Back"/>
+                                <connections>
+                                    <action selector="BackButtonPressed:" destination="Uj4-rC-HcV" eventType="touchUpInside" id="4un-mW-frA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gzC-HD-rOX"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mc1-AH-RJm" firstAttribute="leading" secondItem="JoZ-XD-V8d" secondAttribute="leadingMargin" id="0tg-ao-dV0"/>
+                            <constraint firstItem="T7c-7B-Bau" firstAttribute="top" secondItem="jdk-x8-W2D" secondAttribute="bottom" constant="24" id="6UI-59-4dq"/>
+                            <constraint firstItem="T7c-7B-Bau" firstAttribute="centerX" secondItem="JoZ-XD-V8d" secondAttribute="centerX" id="7ZH-fR-aq9"/>
+                            <constraint firstItem="jdk-x8-W2D" firstAttribute="centerX" secondItem="JoZ-XD-V8d" secondAttribute="centerX" id="QUI-uQ-13w"/>
+                            <constraint firstItem="T7c-7B-Bau" firstAttribute="centerY" secondItem="JoZ-XD-V8d" secondAttribute="centerY" id="ZZR-iX-BPy"/>
+                            <constraint firstItem="gzC-HD-rOX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mc1-AH-RJm" secondAttribute="trailing" symbolic="YES" id="uPn-de-goC"/>
+                            <constraint firstItem="Mc1-AH-RJm" firstAttribute="top" secondItem="gzC-HD-rOX" secondAttribute="top" id="yEZ-Rd-onx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="darkModeSwitch" destination="678-OP-esO" id="qDx-VA-T8C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtW-Xe-XE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948.85496183206101" y="82.394366197183103"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
