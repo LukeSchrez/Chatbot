@@ -10,6 +10,10 @@ import UIKit
 //Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
 //we can register our new MessageBubbleCell within the ViewController so we can output them within the TableView
 
+//SOURCES REFERENCED:
+//https://developer.apple.com/forums/thread/108048
+//https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
+
 var botText = ""
 
 struct constants{
@@ -83,54 +87,112 @@ class ViewController: UIViewController {
     }
     
     func responses(msg: inout sampleMessages) {
-        //DispatchQueue.main.asyncAfter( deadline: .now() + 0.75 ) { [self] in
-        var elem = 0
+        //Array to store user inputs for use at any point in the conversation
         var memory: [Any] = Array(repeating: 0, count: 99)
         
-        if (msg.body == "hello") {
+        //Bot response and subsequent conversation depends on user input
+        if ((msg.body).lowercased() == "hello") {
             botText = "Hello there, welcome to your personal chatbot developed in Swift!"
+            //Append memory user input to memory array after each user input and bot response pair
+            memory.append("hello")
+            //Call appendMessage function to process and display messages in the table view
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
         }
         
-        if (msg.body == "how are you?") {
+        //User inputs are automatically lowercased to ignore input cases
+        if ((msg.body).lowercased() == "how are you?") {
             botText = "I'm good, how are you?"
+            memory.append("how are you?")
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
         }
+        
+        if ((msg.body).lowercased() == "goodbye" || msg.body == "bye") {
+            botText = "Goodbye!"
+            memory.append("goodbye")
+            //Clear table view if user says "goodbye" or "bye" to the bot
+            messages = []
+            //Reloads process to start again, prompting the user for input
+            MessageTableView.reloadData()
+        }
+        
         if (botText == ("I'm good, how are you?")) {
-            if (msg.body == "good") {
+            if ((msg.body).lowercased() == "good") {
                 botText = "That's good to hear"
+                //Delays bot response time by 0.75 seconds
+                Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                    appendMessage(botText: botText)
+                }
             }
         }
         
         if (botText == "My name is Taylor, what is yours?") {
             botText = "Nice to meet you, \(msg.body)!"
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
         }
-        if (msg.body == "what is your name?") {
+        
+        if ((msg.body).lowercased() == "what is your name?") {
             botText = "My name is Taylor, what is yours?"
+            memory.append("what is your name?")
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
         }
             
         if (botText == "Woah we go to the same school! What is your major?") {
-            if ((msg.body == "CS") || (msg.body == "Computer science")) {
+            //Example of when user can have two different types of responses
+            //Bot determines which one, and formulates a response based on that
+            if (((msg.body).lowercased() == "CS") || (msg.body == "Computer science")) {
                 botText = "We have the same major too! How do you like it?"
+                memory.append("CS")
+                memory.append("Computer science")
+                Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                    appendMessage(botText: botText)
+                }
             } else {
+                //Conversation will take a different direction if first conditions are not met
                 botText = "Oh interesting, how do you like \(msg.body)?"
+                memory.append(msg.body)
+                Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                    appendMessage(botText: botText)
+                }
             }
-        }
-        if (botText == "I go to CSUF! What about you?") {
-            if (msg.body == "CSUF") {
-                botText = "Woah we go to the same school! What is your major?"
-                memory[elem] = "CSUF"
-                elem += 1
-            }
-        }
-        if (msg.body == "what school do you go to?") {
-            botText = "I go to CSUF! What about you?"
         }
         
-        let newBotMessage = sampleMessages(body: botText)
-        print (newBotMessage)
-        self.messages.append(newBotMessage)
-        self.MessageTableView.reloadData()
-        MessageTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
-        //}
+        if (botText == "I go to CSUF! What about you?") {
+            if ((msg.body).lowercased() == "CSUF") {
+                botText = "Woah we go to the same school! What is your major?"
+                memory.append("CSUF")
+                Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                    appendMessage(botText: botText)
+                }
+            }
+        }
+        
+        if ((msg.body).lowercased() == "what school do you go to?") {
+            botText = "I go to CSUF! What about you?"
+            memory.append("what school do you go to?")
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
+        }
+        
+        //Function called after every user input and bot response pair
+        func appendMessage(botText: String) {
+            let newBotMessage = sampleMessages(body: botText)
+            print (newBotMessage)
+            //Display messages in chat bubble form
+            self.messages.append(newBotMessage)
+            self.MessageTableView.reloadData()
+            //Automatically scrolls to only display the most recent messages
+            MessageTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
+        }
+        
     }
     
     //This is the core of our chat messages. A struct called sampleMessages, with a single variable body of
