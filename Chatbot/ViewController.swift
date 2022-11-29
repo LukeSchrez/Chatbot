@@ -13,6 +13,7 @@ import UIKit
 //SOURCES REFERENCED:
 //https://developer.apple.com/forums/thread/108048
 //https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
+//https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
 
 var botText = ""
 
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
     
     @IBAction func sendButtonPressed(_ sender: Any) {
         
-        //text is the new input typed in by the user of type messageTextField.text
+        //Text is the new input typed in by the user of type messageTextField.text
         if let text = messageTextField.text {
             //Set newMessage to equal a new sampleMessages, with the body being new input text
             var newMessage = sampleMessages(body: text)
@@ -93,15 +94,39 @@ class ViewController: UIViewController {
     }
     
     func responses(msg: inout sampleMessages) {
-        //Array to store user inputs for use at any point in the conversation
-        var memory: [Any] = Array(repeating: 0, count: 99)
+        
+        if ((msg.body).lowercased() == "help") {
+            //Outputs list of all possible conversation starters a user can use
+            //Note that these aren't all necessarily conversation starters, as some of them may be used at any point in the conversation
+            botText = """
+                      Conversation starters:\nHello\nHi\nHey\nWhat time is it?\nWhat is the date?
+                      What is today's date?\nHow are you?\nWhat is your name?\nWhat school do you go to?
+                      \nTo reset conversation:\nGoodbye\nBye
+                      """
+            //Call appendMessage function to process and display messages in the table view
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
+        }
         
         //Bot response and subsequent conversation depends on user input
-        if ((msg.body).lowercased() == "hello") {
-            botText = "Hello there, welcome to your personal chatbot developed in Swift!"
-            //Append memory user input to memory array after each user input and bot response pair
-            memory.append("hello")
+        if ((msg.body).lowercased() == "hello" || (msg.body).lowercased() == "hi" || (msg.body).lowercased() == "hey") {
+            botText = "Hello there!"
             //Call appendMessage function to process and display messages in the table view
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
+        }
+        
+        if ((msg.body).lowercased() == "what time is it?" || (msg.body).lowercased() == "what is the date?" || (msg.body).lowercased() == "what is today’s date?") {
+            //Get date and time
+            let date = Date()
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = df.string(from: date)
+            
+            botText = dateString
+            
             Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                 appendMessage(botText: botText)
             }
@@ -110,7 +135,6 @@ class ViewController: UIViewController {
         //User inputs are automatically lowercased to ignore input cases
         if ((msg.body).lowercased() == "how are you?") {
             botText = "I'm good, how are you?"
-            memory.append("how are you?")
             Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                 appendMessage(botText: botText)
             }
@@ -118,7 +142,6 @@ class ViewController: UIViewController {
         
         if ((msg.body).lowercased() == "goodbye" || msg.body == "bye") {
             botText = "Goodbye!"
-            memory.append("goodbye")
             //Clear table view if user says "goodbye" or "bye" to the bot
             messages = []
             //Reloads process to start again, prompting the user for input
@@ -136,7 +159,7 @@ class ViewController: UIViewController {
         }
         
         if (botText == "My name is Taylor, what is yours?") {
-            botText = "Nice to meet you, \(msg.body)!"
+            botText = "Nice to meet you, \(msg.body)! I'm from Fullerton, where are you from?"
             Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                 appendMessage(botText: botText)
             }
@@ -144,7 +167,6 @@ class ViewController: UIViewController {
         
         if ((msg.body).lowercased() == "what is your name?") {
             botText = "My name is Taylor, what is yours?"
-            memory.append("what is your name?")
             Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                 appendMessage(botText: botText)
             }
@@ -153,17 +175,14 @@ class ViewController: UIViewController {
         if (botText == "Woah we go to the same school! What is your major?") {
             //Example of when user can have two different types of responses
             //Bot determines which one, and formulates a response based on that
-            if (((msg.body).lowercased() == "CS") || (msg.body == "Computer science")) {
+            if (((msg.body).lowercased() == "cs") || (msg.body).lowercased() == "computer science") {
                 botText = "We have the same major too! How do you like it?"
-                memory.append("CS")
-                memory.append("Computer science")
                 Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                     appendMessage(botText: botText)
                 }
             } else {
                 //Conversation will take a different direction if first conditions are not met
                 botText = "Oh interesting, how do you like \(msg.body)?"
-                memory.append(msg.body)
                 Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                     appendMessage(botText: botText)
                 }
@@ -171,9 +190,13 @@ class ViewController: UIViewController {
         }
         
         if (botText == "I go to CSUF! What about you?") {
-            if ((msg.body).lowercased() == "CSUF") {
+            if ((msg.body).lowercased() == "csuf") {
                 botText = "Woah we go to the same school! What is your major?"
-                memory.append("CSUF")
+                Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                    appendMessage(botText: botText)
+                }
+            } else {
+                botText = "Oh nice, how do you like it there?"
                 Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                     appendMessage(botText: botText)
                 }
@@ -182,7 +205,6 @@ class ViewController: UIViewController {
         
         if ((msg.body).lowercased() == "what school do you go to?") {
             botText = "I go to CSUF! What about you?"
-            memory.append("what school do you go to?")
             Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
                 appendMessage(botText: botText)
             }
@@ -210,7 +232,7 @@ class ViewController: UIViewController {
     //Now with our core sampleMessages above, create an array of sampleMessages and just call it messages.
     //Now we can store as many chats as we want into this array and it will update our table view accordingly
     var messages: [sampleMessages] = [
-        //sampleMessages(body: "Hello! I am your semi-smart Swift Chatbot!")
+        sampleMessages(body: "Welcome to your personal chatbot developed in Swift! Text \"help\" for options.")
     ]
         
     
