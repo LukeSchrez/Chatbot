@@ -2,17 +2,19 @@
 //  ViewController.swift
 //  Chatbot
 //
-//  Created by Luke Schrezenmeier Anthony Mardiros on 9/7/22.
+//  Created by Luke Schrezenmeier and Anthony Mardiros on 9/7/22.
 //
 
 import UIKit
 
-//Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
-//we can register our new MessageBubbleCell within the ViewController so we can output them within the TableView
-
 //SOURCES REFERENCED:
 //https://developer.apple.com/forums/thread/108048
 //https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
+//https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16253400?start=1155#overview
+
+//Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
+//we can register our new MessageBubbleCell within the ViewController so we can output them within the TableView
+
 
 var botText = ""
 
@@ -64,7 +66,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageTextField: UITextField!
     
     @IBOutlet weak var bottomContraintTextField: NSLayoutConstraint!
-    
     
     
     @IBAction func infoButtonPressed(_ sender: UIButton) {

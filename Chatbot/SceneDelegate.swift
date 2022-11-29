@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Chatbot
 //
-//  Created by Luke Schrezenmeier on 9/7/22.
+//  Created by Luke Schrezenmeier and Anthony Mardiros on 9/7/22.
 //
 
 import UIKit
