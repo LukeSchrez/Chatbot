@@ -295,7 +295,7 @@ extension ViewController: UITableViewDataSource{
     //cell to access the MessageTableView and the MessageBubbleCell/BotResponseCell identifier is what allows the cell to use
     //the unique designs
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Check if the current row index of the table view is odd for the bot or even for the user so that they alternate
+        //Check if our current row index of the table view is odd for the bot or even for the user so that they alternate
         if (indexPath.row % 2) != 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: constants.xibFileIdentifier, for: indexPath)
             as! MessageBubbleCell
