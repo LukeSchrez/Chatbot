@@ -4,6 +4,9 @@
 //
 //  Created by Luke Schrezenmeier and Anthony Mardiros on 9/15/22.
 //
+//  SOURCES REFERENCED:
+//  https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16813324#overview
+//  https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16813328#overview
 
 import UIKit
 
