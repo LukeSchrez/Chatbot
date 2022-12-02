@@ -11,6 +11,10 @@ import UIKit
 //https://developer.apple.com/forums/thread/108048
 //https://stackoverflow.com/questions/38031137/how-to-program-a-delay-in-swift-3
 //https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16253400?start=1155#overview
+//https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16252634#overview
+//https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16252636#overview
+//https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16813324#overview
+//https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16813328#overview
 //https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
 
 //Constants used to specify file name and file identifier for the MessageBubbleCell xib files. These are so
