@@ -118,6 +118,13 @@ class ViewController: UIViewController {
             }
         }
         
+        if ((msg.body).lowercased() == "it’s good") {
+            botText = "I like to hear it"
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
+        }
+        
         if ((msg.body).lowercased() == "what time is it?" || (msg.body).lowercased() == "what is the date?" || (msg.body).lowercased() == "what is today’s date?") {
             //Get date and time
             let date = Date()
@@ -172,6 +179,13 @@ class ViewController: UIViewController {
             }
         }
             
+        if ((msg.body).lowercased() == "santa clarita") {
+            botText = "Nice!"
+            Timer.scheduledTimer(withTimeInterval: 0.75, repeats: false) { (timer) in
+                appendMessage(botText: botText)
+            }
+        }
+        
         if (botText == "Woah we go to the same school! What is your major?") {
             //Example of when user can have two different types of responses
             //Bot determines which one, and formulates a response based on that
