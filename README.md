@@ -19,6 +19,8 @@ The chatbot has the following requirements
 * When choosing a build version for the simulator, make sure your iPhone IOS version is at least IOS 15.5.
 
 # How to Run
+# Download the project folder from the github repository.
+# Inside the "Chatbot" folder, click on the file Chatbot.xcodeproj to open the project in XCode.
 * Ensure your XCode version is at least 14.1.
 * Click on "XCode" on the top left of your screen and select the "About XCode" option to confirm your version.
 * On the top of the XCode application window you'll see a selection bar that says "Chatbot" with an arrow pointing to your build target.
